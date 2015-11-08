@@ -1,9 +1,29 @@
+********************************************************************************
+* Description of the Program -												   *
+* Utility to convert hexadecimal RGB colors to decimal formatted RGB values.   *
+*                                                                              *
+* System Requirements -														   *
+*     none                                                                     *
+*                                                                              *
+* Lines -                                                                      *
+*     165                                                                      *
+*                                                                              *
+********************************************************************************
+
+*! hextorgb
+*! v 0.0.1
+*! 08nov2015
+
+// Drop program if already loaded in memory
 cap prog drop hextorgb
 
+// Define program as rclass
 prog def hextorgb, rclass
 
+	// Set version to interpret syntax under
 	version 12
 	
+	// Syntax for hex to RGB converter
 	syntax, HEXcolor(string asis) 
 	
 	// Check to see if argument is a variable or not
@@ -38,9 +58,9 @@ prog def hextorgb, rclass
 		} // End Loop over the hexadecimal characters
 
 		// Convert the two character hexadecmial values to decimal values
-		qui: g `red' = `v1' + `v2'^2 
-		qui: g `green' = `v3' + `v4'^2
-		qui: g `blue' = `v5' + `v6'^2
+		qui: g `red' = (`v1' * 16^1) + (`v2' * 16^0) 
+		qui: g `green' =  (`v3' * 16^1) + (`v4' * 16^0)
+		qui: g `blue' =  (`v5' * 16^1) + (`v6' * 16^0)
 		
 		// Concatenate the three values together and then clean up the other data
 		qui: egen rgb = concat(r g b), p(" ")
@@ -94,13 +114,13 @@ prog def hextorgb, rclass
 			} // End Loop to parse the string
 	
 			// Red component
-			loc red = `v1' + `v2'^2
+			loc red = (`v1' * 16^1) + (`v2' * 16^0) 
 			
 			// Green component
-			loc green = `v3' + `v4'^2
+			loc green =  (`v3' * 16^1) + (`v4' * 16^0)
 			
 			// Blue component
-			loc blue = `v5' + `v6'^2
+			loc blue =  (`v5' * 16^1) + (`v6' * 16^0)
 			
 			// Comma delimited RGB values
 			loc rgb `red', `green', `blue'
