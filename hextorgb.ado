@@ -54,6 +54,8 @@ prog def hextorgb, rclass
 				 
 			// Recast the value to numeric	 
 			qui: destring `v`i'', replace
+
+			qui: drop `tmp'
 			
 		} // End Loop over the hexadecimal characters
 
@@ -63,7 +65,7 @@ prog def hextorgb, rclass
 		qui: g `blue' =  (`v5' * 16^1) + (`v6' * 16^0)
 		
 		// Concatenate the three values together and then clean up the other data
-		qui: egen rgb = concat(r g b), p(" ")
+		qui: egen rgb = concat(`red' `green' `blue'), p(" ")
 		
 	} // End IF Block for variable argument
 	
