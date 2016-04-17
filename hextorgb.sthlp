@@ -1,9 +1,11 @@
 {smcl}
-{* *! version 0.0.0  06NOV2015}{...}
-{cmd:help hextorgb}
+{* *! version 1.0.0 21MAR2016}{...}
+
+{hline}
+Command to convert hexadecimal RGB values to unsigned char RGB values [0, 255]
 {hline}
 
-{title:Title}
+{title:help for hextorgb}
 
 {hi:hextorgb {hline 2}} A utility to convert Hexadecimal encoded RGB values to decimal encoded RGB values.
 
@@ -17,6 +19,7 @@
 values to decimal values. {p_end}
 
 {title:Options}
+
 {p 4 4 8}{cmdab:hex:color} is the only required argument and can accept either a 
 variable with the hexadecimal encoded string or a series of raw string values.  
 If string values are passed to the option, the red, green, and blue component 
@@ -24,7 +27,7 @@ values are returned in local macros, as are a comma delimited and a Stata
 formatted RGB string.  If a hexadecimal value is passed to the argument, it will 
 return a Stata formatted RGB string in the variable {hi: rgb}. {p_end}
 
-{marker examples}{title:Examples}{break}
+{marker examples}{title:Examples}
 
 {p 4 4 4} Get the RGB values for the {browse `"https://github.com/mbostock/d3/wiki/Ordinal-Scales#ordinal"':D3js} ordinal scale color palettes. {p_end}
 
@@ -40,10 +43,9 @@ return a Stata formatted RGB string in the variable {hi: rgb}. {p_end}
 {p 4 4 4} This returns the RGB values for the colors listed under d3.scale.category20c(). {p_end}
 {p 8 8 12}{stata hextorgb, hex("#3182bd" "#6baed6" "#9ecae1" "#c6dbef" "#e6550d" "#fd8d3c" "#fdae6b" "#fdd0a2" "#31a354" "#74c476" "#a1d99b" "#c7e9c0" "#756bb1" "#9e9ac8" "#bcbddc" "#dadaeb" "#636363" "#969696" "#bdbdbd" "#d9d9d9")}{p_end}
 
-
-{title: Author}{break}
-{p 1 1 1} William R. Buchanan, Ph.D. {break}
-Data Scientist {break}
-{browse "http://mpls.k12.mn.us":Minneapolis Public Schools} {break}
-William.Buchanan at mpls [dot] k12 [dot] mn [dot] us
+{title:Author}{break}
+{p 4 4 8}William R. Buchanan, Ph.D.{p_end}
+{p 4 4 8}Data Scientist{p_end}
+{p 4 4 8}{browse "http://mpls.k12.mn.us":Minneapolis Public Schools}{p_end}
+{p 4 4 8}William.Buchanan at mpls [dot] k12 [dot] mn [dot] us{p_end}
 

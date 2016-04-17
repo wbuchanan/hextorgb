@@ -11,8 +11,8 @@
 ********************************************************************************
 
 *! hextorgb
-*! v 0.0.1
-*! 08nov2015
+*! v 1.0.1
+*! 03APR2016
 
 // Drop program if already loaded in memory
 cap prog drop hextorgb
@@ -35,12 +35,12 @@ prog def hextorgb, rclass
 		// Create vector of temporary variables
 		tempvar tmp v1 v2 v3 v4 v5 v6 red green blue
 	
+		// Create temp copy of original
+		qui: g `tmp' = trim(itrim(subinstr(`hexcolor', `"#"', "", .)))
+		
 		// Split the string into component parts
 		forv i = 1/6 {
 		
-			// Create temp copy of original
-			qui: g `tmp' = trim(itrim(subinstr(`hexcolor', `"#"', "", .)))
-			
 			// Move each character into a new variable
 			qui: g `v`i'' = substr(`tmp', `i', 1)
 			
@@ -63,7 +63,7 @@ prog def hextorgb, rclass
 		qui: g `blue' =  (`v5' * 16^1) + (`v6' * 16^0)
 		
 		// Concatenate the three values together and then clean up the other data
-		qui: egen rgb = concat(r g b), p(" ")
+		qui: egen rgb = concat(`red' `green' `blue'), p(" ")
 		
 	} // End IF Block for variable argument
 	
@@ -164,4 +164,3 @@ prog def hextorgb, rclass
 // End of program
 end
 
-	
