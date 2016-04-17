@@ -54,6 +54,8 @@ prog def hextorgb, rclass
 				 
 			// Recast the value to numeric	 
 			qui: destring `v`i'', replace
+
+			qui: drop `tmp'
 			
 		} // End Loop over the hexadecimal characters
 
