@@ -11,8 +11,8 @@
 ********************************************************************************
 
 *! hextorgb
-*! v 1.0.1
-*! 03APR2016
+*! v 1.0.2
+*! 05JUL2019
 
 // Drop program if already loaded in memory
 cap prog drop hextorgb
@@ -54,8 +54,6 @@ prog def hextorgb, rclass
 				 
 			// Recast the value to numeric	 
 			qui: destring `v`i'', replace
-
-			qui: drop `tmp'
 			
 		} // End Loop over the hexadecimal characters
 
